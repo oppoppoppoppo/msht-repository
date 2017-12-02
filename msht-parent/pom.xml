@@ -1,0 +1,545 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>1.4.1.RELEASE</version>
+	</parent>
+	<groupId>com.msht.parent</groupId>
+	<artifactId>msht-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<name>msht-parent</name>
+	<description>parent project</description>
+	<!-- 统一的jar包版本管理 -->
+	<properties>
+		<!-- jdk版本 -->
+		<java.version>1.8</java.version>
+		<!-- 源文件编码格式 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!-- jdk编译源码版本 -->
+		<jdk.compile.source.version>1.8</jdk.compile.source.version>
+		<!-- jdk编译目标版本 -->
+		<jdk.compile.target.version>1.8</jdk.compile.target.version>
+		<!-- junit版本 -->
+		<junit.version>4.12</junit.version>
+		<!-- log4j版本 -->
+		<log4j.version>1.2.17</log4j.version>
+		<!-- MySQL -->
+		<mysql.version>5.1.40</mysql.version>
+		<oracle.driver.version>10.2.0.4.0</oracle.driver.version>
+		<druid.version>1.0.18</druid.version>
+		<!-- dubbo版本 -->
+		<dubbo.version>2.5.3</dubbo.version>
+		<!-- zookeeper版本 -->
+		<zookeeper.version>3.4.6</zookeeper.version>
+		<!-- zkclient版本 -->
+		<zkclient.version>0.1</zkclient.version>
+		<!-- poi版本 -->
+		<poi.version>3.9</poi.version>
+		<!-- xmlbeans版本 -->
+		<xmlbeans.version>2.3.0</xmlbeans.version>
+		<!-- commons-lang3版本 -->
+		<commons-lang3.version>3.4</commons-lang3.version>
+		<!-- commons-io版本 -->
+		<commons-io.version>2.4</commons-io.version>
+		<!-- commons-fileupload版本 -->
+		<commons-fileupload.version>1.3.1</commons-fileupload.version>
+		<!-- guava版本 -->
+		<guava.version>17.0</guava.version>
+		<!-- guava版本 -->
+		<ant.version>1.8.2</ant.version>
+		<!-- dozer版本 -->
+		<dozer.version>5.5.1</dozer.version>
+		<!-- 分页插件版本 -->
+		<mybatis.paginator.version>4.1.6</mybatis.paginator.version>
+		<mybatis-spring-boot-starter.version>1.1.1</mybatis-spring-boot-starter.version>
+		<shiro.version>1.2.3</shiro.version>
+		<springfox-swagger.version>2.2.2</springfox-swagger.version>
+		<xstream.version>1.4.7</xstream.version>
+		<fastjson.version>1.1.40</fastjson.version>
+		<json-lib.version>2.2.3</json-lib.version>
+		<spring-data-redis.version>1.7.3.RELEASE</spring-data-redis.version>
+		<aliyun-sdk-oss.version>2.4.0</aliyun-sdk-oss.version>
+		<class-path>../../../</class-path>
+		<!-- 自定义版本 -->
+		<msht-dubbo-starter.version>0.0.1-SNAPSHOT</msht-dubbo-starter.version>
+		<!-- 基础模块版本 -->
+		<msht-basic-core.version>0.0.1-SNAPSHOT</msht-basic-core.version>
+		<msht-basic-shiro.version>0.0.1-SNAPSHOT</msht-basic-shiro.version>
+		<msht-basic-web.version>0.0.1-SNAPSHOT</msht-basic-web.version>
+		<!-- 基础模块版本 -->
+		<!-- 服务模块版本 -->
+		<msht-cache-api.version>0.0.1-SNAPSHOT</msht-cache-api.version>
+		<msht-user-api.version>0.0.1-SNAPSHOT</msht-user-api.version>
+		<msht-payment-api.version>0.0.1-SNAPSHOT</msht-payment-api.version>
+		<msht-handle-api.version>0.0.1-SNAPSHOT</msht-handle-api.version>
+		<msht-list-tool-api.version>0.0.1-SNAPSHOT</msht-list-tool-api.version>
+		<msht-common-api.version>0.0.1-SNAPSHOT</msht-common-api.version>
+		<!-- 服务模块版本 -->
+		<!-- 自定义版本 -->
+	</properties>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- 自定义包 -->
+			<!-- 基础工程 -->
+			<dependency>
+				<groupId>com.msht.basic</groupId>
+				<artifactId>msht-basic-core</artifactId>
+				<version>${msht-basic-core.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.mybatis</groupId>
+						<artifactId>mybatis</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.basic</groupId>
+				<artifactId>msht-basic-shiro</artifactId>
+				<version>${msht-basic-shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.basic</groupId>
+				<artifactId>msht-basic-web</artifactId>
+				<version>${msht-basic-web.version}</version>
+			</dependency>
+			<!-- 基础工程 -->
+			<!-- 服务工程 -->
+			<dependency>
+				<groupId>com.msht.service</groupId>
+				<artifactId>msht-cache-api</artifactId>
+				<version>${msht-cache-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.service</groupId>
+				<artifactId>msht-user-api</artifactId>
+				<version>${msht-user-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.service</groupId>
+				<artifactId>msht-payment-api</artifactId>
+				<version>${msht-payment-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.handle</groupId>
+				<artifactId>msht-handle-api</artifactId>
+				<version>${msht-handle-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.tool</groupId>
+				<artifactId>msht-list-tool-api</artifactId>
+				<version>${msht-list-tool-api.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.msht.service</groupId>
+				<artifactId>msht-common-api</artifactId>
+				<version>${msht-common-api.version}</version>
+	  		</dependency>
+			<!-- 服务工程 -->
+			<!-- dubbo启动 -->
+			<dependency>
+				<groupId>com.msht.dubbo</groupId>
+				<artifactId>msht-dubbo-starter</artifactId>
+				<version>${msht-dubbo-starter.version}</version>
+			</dependency>
+			<!-- dubbo启动 -->
+			<!-- 自定义包 -->
+
+			<dependency>
+				<groupId>org.quartz-scheduler</groupId>
+				<artifactId>quartz</artifactId>
+				<version>2.2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mybatis.spring.boot</groupId>
+				<artifactId>mybatis-spring-boot-starter</artifactId>
+				<version>${mybatis-spring-boot-starter.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.apache.tomcat</groupId>
+						<artifactId>tomcat-jdbc</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- junit -->
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>${junit.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+
+			<!-- 分页插件 start -->
+			<dependency>
+				<groupId>com.github.pagehelper</groupId>
+				<artifactId>pagehelper</artifactId>
+				<version>${mybatis.paginator.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.github.jsqlparser</groupId>
+				<artifactId>jsqlparser</artifactId>
+				<version>0.9.5</version>
+			</dependency>
+
+			<!-- mysql -->
+			<dependency>
+				<groupId>mysql</groupId>
+				<artifactId>mysql-connector-java</artifactId>
+				<version>${mysql.version}</version>
+			</dependency>
+
+			<!-- oracle -->
+			<dependency>
+				<groupId>com.oracle</groupId>
+				<artifactId>ojdbc14</artifactId>
+				<version>${oracle.driver.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>druid</artifactId>
+				<version>${druid.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>com.alibaba</groupId>
+						<artifactId>jconsole</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>com.alibaba</groupId>
+						<artifactId>tools</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- dubbo -->
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>dubbo</artifactId>
+				<version>${dubbo.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.springframework</groupId>
+						<artifactId>spring</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<dependency>
+				<groupId>com.alibaba</groupId>
+				<artifactId>fastjson</artifactId>
+				<version>${fastjson.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.json-lib</groupId>
+				<artifactId>json-lib</artifactId>
+				<version>${json-lib.version}</version>
+			</dependency>
+
+			<!-- zookeeper -->
+			<dependency>
+				<groupId>org.apache.zookeeper</groupId>
+				<artifactId>zookeeper</artifactId>
+				<version>${zookeeper.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-log4j12</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.slf4j</groupId>
+						<artifactId>slf4j-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+
+			<!-- zkclient -->
+			<dependency>
+				<groupId>com.github.sgroschupf</groupId>
+				<artifactId>zkclient</artifactId>
+				<version>${zkclient.version}</version>
+			</dependency>
+
+			<!-- poi office -->
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.poi</groupId>
+				<artifactId>poi-ooxml-schemas</artifactId>
+				<version>${poi.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.xmlbeans</groupId>
+				<artifactId>xmlbeans</artifactId>
+				<version>2.3.0</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.commons</groupId>
+				<artifactId>commons-lang3</artifactId>
+				<version>${commons-lang3.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-io</groupId>
+				<artifactId>commons-io</artifactId>
+				<version>${commons-io.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-fileupload</groupId>
+				<artifactId>commons-fileupload</artifactId>
+				<version>${commons-fileupload.version}</version>
+			</dependency>
+
+			<!-- google java lib -->
+			<dependency>
+				<groupId>com.google.guava</groupId>
+				<artifactId>guava</artifactId>
+				<version>${guava.version}</version>
+			</dependency>
+
+			<!-- 条形码、二维码生成 -->
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>core</artifactId>
+				<version>2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>com.google.zxing</groupId>
+				<artifactId>javase</artifactId>
+				<version>2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.apache.ant</groupId>
+				<artifactId>ant</artifactId>
+				<version>${ant.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.dozer</groupId>
+				<artifactId>dozer</artifactId>
+				<version>${dozer.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jsoup</groupId>
+				<artifactId>jsoup</artifactId>
+				<version>1.7.3</version>
+			</dependency>
+
+
+			<!-- shiro Start -->
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-core</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-spring</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-cas</artifactId>
+				<version>${shiro.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>commons-logging</groupId>
+						<artifactId>commons-logging</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-web</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.shiro</groupId>
+				<artifactId>shiro-ehcache</artifactId>
+				<version>${shiro.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.crazycake</groupId>
+				<artifactId>shiro-redis</artifactId>
+				<version>2.4.2-RELEASE</version>
+			</dependency>
+
+			<!-- shiro End -->
+
+			<!-- xstream xml -->
+			<dependency>
+				<groupId>com.thoughtworks.xstream</groupId>
+				<artifactId>xstream</artifactId>
+				<version>${xstream.version}</version>
+			</dependency>
+			<!-- xstream xml -->
+
+
+			<!-- User Agent -->
+			<dependency>
+				<groupId>nl.bitwalker</groupId>
+				<artifactId>UserAgentUtils</artifactId>
+				<version>1.6</version>
+			</dependency>
+
+			<dependency>
+				<groupId>javax.servlet.jsp</groupId>
+				<artifactId>jsp-api</artifactId>
+				<version>2.2</version>
+			</dependency>
+
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>1.1.4</version>
+			</dependency>
+
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>${springfox-swagger.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>${springfox-swagger.version}</version>
+			</dependency>
+
+			<dependency>
+				<groupId>ognl</groupId>
+				<artifactId>ognl</artifactId>
+				<version>3.0.6</version>
+				<exclusions>
+					<exclusion>
+						<groupId>javassist</groupId>
+						<artifactId>javassist</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>oro</groupId>
+				<artifactId>oro</artifactId>
+				<version>2.0.8</version>
+			</dependency>
+
+			<dependency>
+				<groupId>net.sf.ezmorph</groupId>
+				<artifactId>ezmorph</artifactId>
+				<version>1.0.6</version>
+			</dependency>
+			<dependency>
+				<groupId>commons-logging</groupId>
+				<artifactId>commons-logging</artifactId>
+				<version>1.2</version>
+			</dependency>
+			<!-- new -->
+			<dependency>
+				<groupId>org.eclipse.persistence</groupId>
+				<artifactId>javax.persistence</artifactId>
+				<version>2.2.0</version>
+			</dependency>
+			<dependency>
+				<groupId>com.aliyun.oss</groupId>
+				<artifactId>aliyun-sdk-oss</artifactId>
+				<version>${aliyun-sdk-oss.version}</version>
+			</dependency>
+			<!-- new -->
+		</dependencies>
+	</dependencyManagement>
+
+
+	<build>
+		<resources>
+			<resource>
+				<targetPath>${project.build.directory}/</targetPath>
+				<directory>src/test/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.xml</include>
+					<include>**/*.yml</include>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+			<resource>
+				<targetPath>${project.build.directory}/classes</targetPath>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+			</resource>
+		</resources>
+
+		<!-- 必须继承的插件配置 -->
+		<plugins>
+			<!-- 资源插件配置 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<configuration>
+					<encoding>${project.build.sourceEncoding}</encoding>
+				</configuration>
+			</plugin>
+			<!-- java编译版本插件配置，不加默认配置为java1.5 -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>${jdk.compile.source.version}</source>
+					<target>${jdk.compile.target.version}</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+
+	<!-- 设定主仓库，按设定顺序进行查找 -->
+	<!-- 如有Nexus私服, 取消注释并指向正确的服务器 -->
+	<!-- <repositories> <repository> <id>releases</id> <name>Team Nexus Repository</name> 
+		<url>http://192.168.0.106:8081/nexus/content/groups/public/</url> </repository> 
+		</repositories> -->
+
+	<!-- 设定插件仓库 -->
+	<!-- 如有Nexus私服, 取消注释并指向正确的服务器 -->
+	<!-- <pluginRepositories> <pluginRepository> <id>releases</id> <name>Team 
+		Nexus Repository</name> <url>http://192.168.0.106:8081/nexus/content/groups/public/</url> 
+		</pluginRepository> </pluginRepositories> -->
+
+	<!-- <distributionManagement> <repository> <id>releases</id> <name>Nexus 
+		Release Repository</name> <url>http://192.168.0.106:8081/nexus/content/repositories/releases/</url> 
+		</repository> <snapshotRepository> <id>snapshots</id> <name>Nexus Snapshot 
+		Repository</name> <url>http://192.168.0.106:8081/nexus/content/repositories/snapshots/</url> 
+		</snapshotRepository> </distributionManagement> -->
+
+	<developers>
+		<developer>
+			<name>hxc</name>
+		</developer>
+	</developers>
+</project>
