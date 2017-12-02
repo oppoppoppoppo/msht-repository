@@ -1,0 +1,28 @@
+# Maven
+target/
+logs/
+release.properties
+*.class
+*.jar
+*.war
+*.ear
+*.iml
+
+# Eclipse
+.classpath
+.project
+.externalToolBuilders/
+.metadata
+.settings/
+.idea/
+.md
+
+# gitignore
+#.gitignore
+
+# key
+/parent/yyzc-web-boss/src/main/webapp/*.key
+/parent/designer/src/main/webapp/*.data
+
+
+
